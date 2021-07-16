@@ -1,0 +1,5 @@
+#Get a java image for the container
+FROM openjdk:8
+#Copy a jar file into the container
+COPY . /build/libs
+#Start the Test program

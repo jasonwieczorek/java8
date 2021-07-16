@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    // docker plugin (allows running docker via tasks)
+    id "com.palantir.docker" version "0.22.1"
 }
 
 group 'j.m.w'
@@ -17,3 +19,11 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+// Tells the docker plugin how to create a container and gives it access to specific files
+docker {
+    name "${project.name}:${project.version}".toLowerCase()
+    files 'Java8-1.0-SNAPSHOT.jar'
+}
+
+
