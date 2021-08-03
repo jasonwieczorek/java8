@@ -1,5 +1,8 @@
 #Get a java image for the container
 FROM openjdk:8
 #Copy a jar file into the container
-COPY . /build/libs
+WORKDIR /
+COPY Java8-1.0-SNAPSHOT.jar Java8-1.0-SNAPSHOT.jar
 #Start the Test program
+EXPOSE 8080
+CMD java -jar Java8-1.0-SNAPSHOT.jar

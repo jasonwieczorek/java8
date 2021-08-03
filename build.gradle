@@ -2,6 +2,16 @@ plugins {
     id 'java'
     // docker plugin (allows running docker via tasks)
     id "com.palantir.docker" version "0.22.1"
+    id "com.palantir.docker-run" version "0.22.1"
+}
+
+//make the jar executable
+jar {
+    manifest {
+        attributes("Implementation-Title": project.name,
+                "Implementation-Version": project.version,
+                "Main-Class": 'j.m.w.jdbc.Test')
+    }
 }
 
 group 'j.m.w'
@@ -20,10 +30,18 @@ test {
     useJUnitPlatform()
 }
 
-// Tells the docker plugin how to create a container and gives it access to specific files
+// https://github.com/palantir/gradle-docker/blob/develop/readme.md
 docker {
     name "${project.name}:${project.version}".toLowerCase()
-    files 'Java8-1.0-SNAPSHOT.jar'
+    files "C:\\Users\\wiecz\\IdeaProjects\\Java8\\build\\libs\\Java8-1.0-SNAPSHOT.jar"
 }
 
+// tells docker what to do when running something
+dockerRun {
+    name "${project.name}".toLowerCase()
+    image "${project.name}:${project.version}".toLowerCase()
+    ports '8080:8080'
+    // Delete container when its done
+    clean true
+}
 
