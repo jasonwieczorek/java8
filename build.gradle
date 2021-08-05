@@ -31,6 +31,7 @@ test {
 }
 
 // https://github.com/palantir/gradle-docker/blob/develop/readme.md
+// copies the file into the docker folder during the docker task (still need to make this dynamic)
 docker {
     name "${project.name}:${project.version}".toLowerCase()
     files "C:\\Users\\wiecz\\IdeaProjects\\Java8\\build\\libs\\Java8-1.0-SNAPSHOT.jar"
