@@ -1,5 +1,8 @@
 plugins {
+
+    // java
     id 'java'
+
     // docker plugin (allows running docker via tasks)
     id "com.palantir.docker" version "0.22.1"
     id "com.palantir.docker-run" version "0.22.1"
@@ -45,4 +48,6 @@ dockerRun {
     // Delete container when its done
     clean true
 }
+
+
 

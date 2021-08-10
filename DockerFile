@@ -1,4 +1,4 @@
-#Build a Java 8 Executable Image
+#Build a Java 8 Executable Image, this will essentially be our backend at some point
 # syntax=docker/dockerfile:1
 FROM openjdk:8 as javaApp
 WORKDIR /java
@@ -6,6 +6,11 @@ COPY Java8-1.0-SNAPSHOT.jar /java/Java8-1.0-SNAPSHOT.jar
 #not really needed but will use later
 EXPOSE 8080
 CMD java -jar /java/Java8-1.0-SNAPSHOT.jar
+
+#Build a React Application
+FROM node:13.12.0-alpine
+WORKDIR /react
+COPY
 
 #Build an image for an Oracle Express DB
 FROM container-registry.oracle.com/database/express:18.4.0-xe as oracleDB
